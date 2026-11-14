@@ -1,6 +1,8 @@
 import csv
 from datetime import datetime, timedelta
 
+tries_threshold = 3
+time_threshold = 60
 
 def demo_datetime():
     time = datetime.strptime("14:00:01", "%H:%M:%S")
@@ -17,7 +19,7 @@ def read_events(path):
     return events
         
 
-
+# 3 tries within 60 seconds
 def find_brute_force(events):
     occurrency_times = {}
     for timestamp, ip in events:
@@ -28,8 +30,8 @@ def find_brute_force(events):
     hits = set()
     for ip, timestamps in occurrency_times.items():
         timestamps.sort()
-        for i in range(len(timestamps) - 2):
-            if timestamps[i + 2] - timestamps[i] <= timedelta(seconds=60):
+        for i in range(len(timestamps) - (tries_threshold -1)):
+            if timestamps[i + (tries_threshold - 1)] - timestamps[i] <= timedelta(seconds=time_threshold):
                 hits.add(ip)
     return sorted(hits)
 

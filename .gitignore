@@ -1,0 +1,10 @@
+# Virtuell miljö (skapas med uv sync)
+.venv/
+
+# Kompilerad Python-kod
+__pycache__/
+*.py[cod]
+
+# Cache från pytest och ruff
+.pytest_cache/
+.ruff_cache/
