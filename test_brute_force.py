@@ -37,13 +37,3 @@ def test_zero_tries_raises_index_error():
             brute_force.tries_threshold = 0
             with pytest.raises(IndexError):
                     brute_force.find_brute_force(test_data)
-# def test_should_result_in_none_suspects():
-#     # Given
-#     brute_force.time_threshold = 6
-#     brute_force.tries_threshold = 2
-
-#     # When
-#     result = brute_force.find_brute_force(test_data)
-
-#     # Then
-#     assert result == []
